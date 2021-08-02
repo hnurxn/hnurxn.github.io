@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      2.1k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      25
        分钟
     </span>
   
@@ -299,21 +299,21 @@
 <li>执行命令git init</li>
 </ol>
 <p>如果在当前目录中看到.git文件夹（隐藏文件夹），则说明Git仓库<em>创建成功</em>。</p>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_1.png" srcset="/img/loading.gif" lazyload alt="image-20210801211253347" /></p>
+<p><img src="/img/git_1.png" srcset="/img/loading.gif" lazyload alt="手动创建本地仓库" /></p>
 <p><font color= blue>从远程仓库克隆</font></p>
 <p>​	通过Git提供的命令从远程仓库进行克隆，将远程仓库克隆到本地，命令形式为：<u>git clone 远程Git仓库地址</u>（从本地克隆 git clone /path/to/repository）</p>
 <p><strong>更新Git仓库：</strong></p>
 <p>在版本库的目录（工作区）下新建一个记事本文件readme.txt</p>
 <p><strong>第一步</strong>：使用命令 git add readme.txt添加到暂存区里面去。如下：</p>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_2.png" srcset="/img/loading.gif" lazyload alt="image-20210801212708277" /></p>
+<p><img src="/img/git_2.png" srcset="/img/loading.gif" lazyload alt="第一步：工作区-&gt;暂存区" /></p>
 <p>如果没有任何提示，说明已经添加成功了。</p>
 <p><strong>第二步</strong>：用命令 git commit告诉Git，把文件提交到仓库</p>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_3.png" srcset="/img/loading.gif" lazyload alt="image-20210801212833856" /></p>
+<p><img src="/img/git_3.png" srcset="/img/loading.gif" lazyload alt="第二步：暂存区-&gt;本地仓库" /></p>
 <p>现在已经成功提交一个readme.txt文件了。</p>
 <p><strong>第三步</strong>：检查是否还有文件未提交（比如修改了未提交等等），如下（手动修改readme.txt然后执行命令）：</p>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_4.png" srcset="/img/loading.gif" lazyload alt="image-20210801213310050" /></p>
+<p><img src="/img/git_4.png" srcset="/img/loading.gif" lazyload alt="查看当前本地仓库的状态" /></p>
 <p>上图表示readme.txt已经被修改，这时候需要检查修改的是什么内容，使用如下命令：</p>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_5.png" srcset="/img/loading.gif" lazyload alt="image-20210801213625568" /></p>
+<p><img src="/img/git_5.png" srcset="/img/loading.gif" lazyload alt="查看工作区的文件修改内容" /></p>
 <p>可以看到，readme文件从空字符变成两行数字，知道修改了什么内容就可以重复一二步进行commit，修改便成功提交。</p>
 <pre><code class=" mermaid">graph LR
 	A[工作区]--&gt;|git add &lt;filename&gt;|B[缓存区]
@@ -331,7 +331,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">邮箱和用户名已经在上面环境配置中设置好了<br>ssh -T git@github.com<br>输入该命令，紧接着输入密码，提醒successfully authenticated则认证成功<br></code></pre></td></tr></table></figure>
 <p>保证可以连接远程仓库后，打开GitHub主页新建一个空的远程仓库比如newrepo，这时候可以在本地仓库的工作区输入以下命令进行提交</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote -v 查看当前远程仓库<br>git remote rm origin 有远程仓库先删掉<br>git remote add origin git@github.com:hnurxn(username)/newrepo(projectname).git 重新设置为你的用户名/仓库名<br>git branch -M main(可有可无默认为master，push的分支与下面统一)<br>git push -u origin master 完成push操作<br></code></pre></td></tr></table></figure>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Cgit_6.png" srcset="/img/loading.gif" lazyload alt="image-20210802145724572" /></p>
+<p><img src="/img/git_6.png" srcset="/img/loading.gif" lazyload alt="本地向远程传送" /></p>
 <p>以上是最基本的从本地到远程服务器push文件的方法，细节操作有以下内容：</p>
 <p>查看当前的远程库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote<br>origin<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>执行时加上-v参数，可以看到每个别名的实际链接地址<br></code></pre></td></tr></table></figure>
@@ -341,6 +341,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">推送你的新分支与数据到某个远端仓库<br>$ git push [<span class="hljs-built_in">alias</span>] [branch]<br>以上命令将你的 [branch] 分支推送成为 [<span class="hljs-built_in">alias</span>] 远程仓库上的 [branch] 分支，实例如下:<br>$ git push origin master <br>将本地的master分支推送到origin远程仓库上<br></code></pre></td></tr></table></figure>
 <p>删除远程仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 添加仓库 origin2</span><br>$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git<br><br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 删除仓库 origin2</span><br>$ git remote rm origin2<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br></code></pre></td></tr></table></figure>
+<h3 id="几个容易混淆的概念"><a class="markdownIt-Anchor" href="#几个容易混淆的概念"></a> 几个容易混淆的概念</h3>
+<p><font color = blue size = 4>工作区 本地仓库  远程仓库  项目  版本库 仓库</font></p>
+<p><strong>工作区</strong>是指<strong>本地仓库</strong>除去.git文件夹的全部内容，即具体的代码工程，每一次修改与提交都会记录在.git文件夹里，每一次修改也代表着一个新的版本，因此仓库整体又称为<strong>版本库</strong></p>
+<p><strong>项目+git版本控制=仓库=版本库（本地仓库+远程仓库）=工作区+.git文件夹</strong></p>
 
             </div>
             <hr>
