@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.4k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      27
        分钟
     </span>
   
@@ -341,6 +341,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">推送你的新分支与数据到某个远端仓库<br>$ git push [<span class="hljs-built_in">alias</span>] [branch]<br>以上命令将你的 [branch] 分支推送成为 [<span class="hljs-built_in">alias</span>] 远程仓库上的 [branch] 分支，实例如下:<br>$ git push origin master <br>将本地的master分支推送到origin远程仓库上<br></code></pre></td></tr></table></figure>
 <p>删除远程仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 添加仓库 origin2</span><br>$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git<br><br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 删除仓库 origin2</span><br>$ git remote rm origin2<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br></code></pre></td></tr></table></figure>
+<table><tr><td bgcolor=yellow><center><font face="黑体" size=5>分支的使用</font></center></td></tr></table>
+<p>分支即branch，每个分支可以理解为独立的一个项目思路。每个branch有自己独立的工作区，即有独立的文件区，在本地仓库下输入以下命令进行操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch 列举分支<br>$ git branch testing 新建分支<br>$ git checkout testing 切换当前分支<br></code></pre></td></tr></table></figure>
+<p>以从远程仓库clone到本地仓库为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.先将远程仓库克隆到本地<br>$ git <span class="hljs-built_in">clone</span> 仓库地址<br>2.在本地仓库打开Git bash 默认的分支为master<br>3.利用checkout切换分支（如果远程仓库有多个分支的话）<br>$ git checkout branchname<br>4.切换到哪个分支，文件夹则显示哪个分支的文件区，即当前工作区（每个分支有不同的提交记录commit），在当前工作区可以修改文件，然后add+commit,commit记录保存到该分支的总记录中<br></code></pre></td></tr></table></figure>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>容易混淆的概念</font></center></td></tr></table>
 <p><font color = blue size = 4>工作区 本地仓库  远程仓库  项目  版本库 仓库</font></p>
 <p><strong>工作区</strong>是指<strong>本地仓库</strong>除去.git文件夹的全部内容，即具体的代码工程，每一次修改与提交都会记录在.git文件夹里，每一次修改也代表着一个新的版本，因此仓库整体又称为<strong>版本库</strong></p>
