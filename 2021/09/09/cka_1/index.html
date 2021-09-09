@@ -272,7 +272,7 @@
 <blockquote>
 <p><em>We apply CKA (centered kernel alignment) to measure the similarity of the hidden representations of different neural network architectures, finding that representations in wide or deep models exhibit a characteristic structure, which we term the</em> <em>block structure. We study how the block structure varies across different training runs, and uncover a connection between block structure and model overparametrization — block structure primarily appears in overparameterized model</em></p>
 </blockquote>
-<p><img src="D:%5Cstudy%5Cgit%5Cmyblog%5Csource%5Cimg%5Clab%5Ccka%E5%8A%A8%E5%9B%BE.gif" srcset="/img/loading.gif" lazyload alt="cka动图" /></p>
+<p><img src="/img/lab/cka%E5%8A%A8%E5%9B%BE.gif" srcset="/img/loading.gif" lazyload alt="cka动图" /></p>
 <p>CKA用来测量不同神经网络的隐藏层之间的相似度，即比较两个网络的activations。</p>
 <h1 id="experimental-setup"><a class="markdownIt-Anchor" href="#experimental-setup"></a> Experimental setup</h1>
 <blockquote>
@@ -290,12 +290,12 @@
 <p><em>We use linear centered kernel alignment (Kornblith et al., 2019; Cortes et al., 2012) to measure similarity between neural network hidden representations</em></p>
 </blockquote>
 <p>如何衡量两个神经网络之间的相似性？一个直观的方法就是计算隐藏层的输出之间的相似度。具体执行也比较简单，给定一个小批次数据，不仅捕获最终输出也要捕获所有隐藏层的输出。对给定两个网络A和B做同样的操作就可以得到两个activations集合 <font color = red size =4>A[hidden_layer1_out,hidden_layer2_out,…,final_out] &amp; B[hidden_layer1_out,hidden_layer2_out,…,final_out]</font></p>
-<img src="/img/lab/representation.png" srcset="/img/loading.gif" lazyload alt="representation" style="zoom: 33%;" />
+<img src="/img/lab/representation.png" srcset="/img/loading.gif" lazyload alt="representation" />
 <p>对两个集合的元素成对比较，得到每个层对（pairs）的相似度，这便完成了整个网络的相似度计算。但是，对相似度指标有一些基本要求，<strong>范围是[0,1]</strong>,（0表示两个完全不同的激活矩阵，1表示完全相同），除此之外，也要<strong>能处理shape不一致的两个网络</strong>。而满足这个要求的指标则是<strong>CKA（ centered kernel alignment ）</strong></p>
 <blockquote>
 <p><em>To reduce memory consumption, we compute CKA as a function of average HSIC scores computed over k minibatches:</em></p>
 </blockquote>
-<img src="/img/lab/cka公式.png" srcset="/img/loading.gif" lazyload alt="cka公式" style="zoom: 50%;" />
+<img src="/img/lab/cka公式.png" srcset="/img/loading.gif" lazyload alt="cka公式"  />
 <blockquote>
 <p><em>where Xᵢ ∈ R^(n x p₁) and Yᵢ ∈ R^(n x p₂) are matrices containing the activations of two layers, one with p₁ neurons and another p₂ neurons, to the same minibatch of n examples sampled without replacement</em></p>
 </blockquote>
@@ -395,7 +395,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.figure(figsize=(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>), dpi=<span class="hljs-number">200</span>)<br>axes = plt.imshow(sim, cmap=<span class="hljs-string">&#x27;magma&#x27;</span>, vmin=<span class="hljs-number">0.0</span>,vmax=<span class="hljs-number">1.0</span>)<br>axes.axes.invert_yaxis() <span class="hljs-comment">#y轴反过来</span><br>plt.savefig(<span class="hljs-string">&quot;ppt.png&quot;</span>, dpi=<span class="hljs-number">400</span>)<br></code></pre></td></tr></table></figure>
 <img src="/img/lab/resnet50_same.png" srcset="/img/loading.gif" lazyload alt="resnet50_same" style="zoom:8%;" />
 <img src="/img/lab/resnet101_same.png" srcset="/img/loading.gif" lazyload alt="resnet101_same" style="zoom:8%;" />
-<img src="D:/img/lab/resnet50_101.png" srcset="/img/loading.gif" lazyload alt="resnet50_101" style="zoom:8%;" />
+<img src="/img/lab/resnet50_101.png" srcset="/img/loading.gif" lazyload alt="resnet50_101" style="zoom:8%;" />
 
             </div>
             <hr>
