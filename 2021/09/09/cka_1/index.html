@@ -290,24 +290,24 @@
 <p><em>We use linear centered kernel alignment (Kornblith et al., 2019; Cortes et al., 2012) to measure similarity between neural network hidden representations</em></p>
 </blockquote>
 <p>如何衡量两个神经网络之间的相似性？一个直观的方法就是计算隐藏层的输出之间的相似度。具体执行也比较简单，给定一个小批次数据，不仅捕获最终输出也要捕获所有隐藏层的输出。对给定两个网络A和B做同样的操作就可以得到两个activations集合 <font color = red size =4>A[hidden_layer1_out,hidden_layer2_out,…,final_out] &amp; B[hidden_layer1_out,hidden_layer2_out,…,final_out]</font></p>
-<img src="D:\study\git\myblog\source\img\lab\representation.png" srcset="/img/loading.gif" lazyload alt="representation" style="zoom: 33%;" />
+<img src="/img/lab/representation.png" srcset="/img/loading.gif" lazyload alt="representation" style="zoom: 33%;" />
 <p>对两个集合的元素成对比较，得到每个层对（pairs）的相似度，这便完成了整个网络的相似度计算。但是，对相似度指标有一些基本要求，<strong>范围是[0,1]</strong>,（0表示两个完全不同的激活矩阵，1表示完全相同），除此之外，也要<strong>能处理shape不一致的两个网络</strong>。而满足这个要求的指标则是<strong>CKA（ centered kernel alignment ）</strong></p>
 <blockquote>
 <p><em>To reduce memory consumption, we compute CKA as a function of average HSIC scores computed over k minibatches:</em></p>
 </blockquote>
-<img src="D:\study\git\myblog\source\img\lab\cka公式.png" srcset="/img/loading.gif" lazyload alt="cka公式" style="zoom: 50%;" />
+<img src="/img/lab/cka公式.png" srcset="/img/loading.gif" lazyload alt="cka公式" style="zoom: 50%;" />
 <blockquote>
 <p><em>where Xᵢ ∈ R^(n x p₁) and Yᵢ ∈ R^(n x p₂) are matrices containing the activations of two layers, one with p₁ neurons and another p₂ neurons, to the same minibatch of n examples sampled without replacement</em></p>
 </blockquote>
 <p>当对足够多的epoch进行平均时，该minibatch计算法得到的结果与整个数据集计算HSIC1得到的结果相同。<u>论文将batch设为256，并迭代10次，计算结果</u>。</p>
 <p><strong><font color = #00FF00>注：Sampling Without Replacement：无放回抽样  U-statistic U-统计量</font></strong></p>
 <p>首先得介绍一下HSIC，在这里用无偏的计算方法，独立于batch size</p>
-<img src="D:\study\git\myblog\source\img\lab\HSIC有偏公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221701108" style="zoom: 50%;" />
+<img src="/img/lab/HSIC有偏公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221701108" style="zoom: 50%;" />
 <p>该公式时有偏的HSIC计算过程（列举出来便于对比学习），下面时HSIC的无偏计算过程</p>
 <blockquote>
 <p><em>We use an unbiased estimator of HSIC (Song et al., 2012) so that the value of CKA is independent of the batch size</em></p>
 </blockquote>
-<img src="D:\study\git\myblog\source\img\lab\HSIC公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221441860" style="zoom:50%;" />
+<img src="/img/lab/HSIC公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221441860" style="zoom:50%;" />
 <blockquote>
 <p><em>where ~K and ~L are obtained by setting the diagonal entries of K and L to zero</em></p>
 </blockquote>
@@ -393,9 +393,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#计算两个矩阵（网络层）的cka</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_CKA_for_two_matrices</span>(<span class="hljs-params">activationA, activationB</span>):</span><br>  <span class="hljs-string">&#x27;&#x27;&#x27;Takes two activations A and B and computes the linear CKA to measure their similarity&#x27;&#x27;&#x27;</span><br><br>  <span class="hljs-comment">#unfold the activations, that is make a (n, h*w*c) representation</span><br>  shape = activationA.shape<br>  activationA = np.reshape(activationA, newshape=(shape[<span class="hljs-number">0</span>], np.prod(shape[<span class="hljs-number">1</span>:])))<br><br>  shape = activationB.shape<br>  activationB = np.reshape(activationB, newshape=(shape[<span class="hljs-number">0</span>], np.prod(shape[<span class="hljs-number">1</span>:])))<br><br>  <span class="hljs-comment">#calculate the CKA score</span><br>  cka_score = CKA(activationA, activationB)<br><br>  <span class="hljs-keyword">del</span> activationA<br>  <span class="hljs-keyword">del</span> activationB<br><br>  <span class="hljs-keyword">return</span> cka_score<br><span class="hljs-comment">#获得中间网络层的representation</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_all_layer_outputs_fn</span>(<span class="hljs-params">model</span>):</span><br>  <span class="hljs-string">&#x27;&#x27;&#x27;Builds and returns function that returns the output of every (intermediate) layer&#x27;&#x27;&#x27;</span><br><br>  <span class="hljs-keyword">return</span> tf.keras.backend.function([model.layers[<span class="hljs-number">0</span>].<span class="hljs-built_in">input</span>],<br>                                  [l.output <span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> model.layers[<span class="hljs-number">1</span>:]])<br><span class="hljs-comment">#先获得所有网络层，再计算所有的cka</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compare_activations</span>(<span class="hljs-params">modelA, modelB, data_batch</span>):</span><br>  <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">  Calculate a pairwise comparison of hidden representations and return a matrix</span><br><span class="hljs-string">  &#x27;&#x27;&#x27;</span><br> <br>  <span class="hljs-comment">#get function to get the output of every intermediate layer, for modelA and modelB</span><br>  intermediate_outputs_A = get_all_layer_outputs_fn(modelA)(data_batch)<br>  intermediate_outputs_B = get_all_layer_outputs_fn(modelB)(data_batch)<br>  <br>  result_array = np.zeros(shape=(<span class="hljs-built_in">len</span>(intermediate_outputs_A), <span class="hljs-built_in">len</span>(intermediate_outputs_B)))<br><br>  <br>  i = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">for</span> outputA <span class="hljs-keyword">in</span> intermediate_outputs_A:<br>    j = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> outputB <span class="hljs-keyword">in</span> intermediate_outputs_B:<br>      cka_score = calculate_CKA_for_two_matrices(outputA, outputB)<br>      result_array[i, j] = cka_score<br>      j+=<span class="hljs-number">1</span><br>    i+= <span class="hljs-number">1</span><br><br>  <span class="hljs-keyword">return</span> result_array<br>sim = compare_activations(resnet50, resnet50, x_train[:<span class="hljs-number">256</span>])<br></code></pre></td></tr></table></figure>
 <p>绘制成heatmap热图</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.figure(figsize=(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>), dpi=<span class="hljs-number">200</span>)<br>axes = plt.imshow(sim, cmap=<span class="hljs-string">&#x27;magma&#x27;</span>, vmin=<span class="hljs-number">0.0</span>,vmax=<span class="hljs-number">1.0</span>)<br>axes.axes.invert_yaxis() <span class="hljs-comment">#y轴反过来</span><br>plt.savefig(<span class="hljs-string">&quot;ppt.png&quot;</span>, dpi=<span class="hljs-number">400</span>)<br></code></pre></td></tr></table></figure>
-<img src="D:\study\git\myblog\source\img\lab\resnet50_same.png" srcset="/img/loading.gif" lazyload alt="resnet50_same" style="zoom:8%;" />
-<img src="D:\study\git\myblog\source\img\lab\resnet101_same.png" srcset="/img/loading.gif" lazyload alt="resnet101_same" style="zoom:8%;" />
-<img src="D:\study\git\myblog\source\img\lab\resnet50_101.png" srcset="/img/loading.gif" lazyload alt="resnet50_101" style="zoom:8%;" />
+<img src="/img/lab/resnet50_same.png" srcset="/img/loading.gif" lazyload alt="resnet50_same" style="zoom:8%;" />
+<img src="/img/lab/resnet101_same.png" srcset="/img/loading.gif" lazyload alt="resnet101_same" style="zoom:8%;" />
+<img src="D:/img/lab/resnet50_101.png" srcset="/img/loading.gif" lazyload alt="resnet50_101" style="zoom:8%;" />
 
             </div>
             <hr>
@@ -640,6 +640,13 @@
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.10/dist/katex.min.css" />
+  
 
 
 
