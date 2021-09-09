@@ -302,12 +302,12 @@
 <p>当对足够多的epoch进行平均时，该minibatch计算法得到的结果与整个数据集计算HSIC1得到的结果相同。<u>论文将batch设为256，并迭代10次，计算结果</u>。</p>
 <p><strong><font color = #00FF00>注：Sampling Without Replacement：无放回抽样  U-statistic U-统计量</font></strong></p>
 <p>首先得介绍一下HSIC，在这里用无偏的计算方法，独立于batch size</p>
-<img src="/img/lab/HSIC有偏公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221701108"  />
+<img src="/img/lab/HSIC有偏公式.png" srcset="/img/loading.gif" lazyload alt="HSIC公式"  />
 <p>该公式时有偏的HSIC计算过程（列举出来便于对比学习），下面时HSIC的无偏计算过程</p>
 <blockquote>
 <p><em>We use an unbiased estimator of HSIC (Song et al., 2012) so that the value of CKA is independent of the batch size</em></p>
 </blockquote>
-<img src="/img/lab/HSIC公式.png" srcset="/img/loading.gif" lazyload alt="image-20210811221441860"  />
+<img src="/img/lab/HSIC公式.png" srcset="/img/loading.gif" lazyload alt="HSIC无偏公式"  />
 <blockquote>
 <p><em>where ~K and ~L are obtained by setting the diagonal entries of K and L to zero</em></p>
 </blockquote>
