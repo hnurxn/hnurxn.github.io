@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>服务器配置的一些小细节</title>
+    <link href="/2021/09/18/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <url>/2021/09/18/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="服务器管理"><a class="markdownIt-Anchor" href="#服务器管理"></a> 服务器管理</h1><h3 id="anaconda环境管理"><a class="markdownIt-Anchor" href="#anaconda环境管理"></a> anaconda环境管理</h3><h5 id="创建anaconda组"><a class="markdownIt-Anchor" href="#创建anaconda组"></a> 创建anaconda组</h5><p>1.groupadd anaconda</p><p>将一个已有用户 cnzhx 增加到一个已有用户组 apache 中，使此用户组成为该用户的附加用户组，可以使用带 -a 参数的 usermod  指令。-a 代表 append， 也就是将用户添加到新用户组中而不必离开原有的其他用户组。不过需要与 -G 选项配合使用：</p><p>2.usermod -a -G apache cnzhx</p><p>如果要同时将 cnzhx 的主要用户组改为 apache，则直接使用 -g 选项：</p><p>usermod -g apache cnzhx</p><p>如果要将一个用户从某个组中删除，则</p><p>gpasswd -d user group</p><p>3.查看用户组信息</p><p>cat /etc/group</p><h5 id="给该组加权限"><a class="markdownIt-Anchor" href="#给该组加权限"></a> 给该组加权限</h5><p>将当前前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</p><p>chown -R runoob:runoobgroup *</p><p>chown unoob:runoobgroup anaconda   将目录anaconda的拥有者和群体修改</p><p>然后再将文件夹修改隶属的组</p><p>chgrp -R anaconda /ssd/anaconda3  后面的文件夹隶属于anaconda组</p><h5 id="检查权限是否正常"><a class="markdownIt-Anchor" href="#检查权限是否正常"></a> 检查权限是否正常</h5><p>ls -a 列出全部内容    altf  全部内容 权限 时间 不排序</p><h3 id="创建用户"><a class="markdownIt-Anchor" href="#创建用户"></a> 创建用户</h3><p>创建用户<br />sudo  useradd  -d  “/home/tt”   -m   -s “/bin/bash”   tt</p><p>解释：   -d   “/home/tt&quot; ：就是指定/home/tt为主目录</p><pre><code> -m   就是如果/home/tt不存在就强制创建</code></pre><p>​  -s    就是指定shell版本</p><p>设置密码</p><p>sudo passwd tt</p><p>把think目录下的.bashrc中的最后一段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">把think目录下的.bashrc中的最后一段 <br><span class="hljs-comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span><br><span class="hljs-comment"># !! Contents within this block are managed by &#x27;conda init&#x27; !!</span><br>__conda_setup=<span class="hljs-string">&quot;<span class="hljs-subst">$(&#x27;/ssd/anaconda3/bin/conda&#x27; &#x27;shell.bash&#x27; &#x27;hook&#x27; 2&gt; /dev/null)</span>&quot;</span><br><span class="hljs-keyword">if</span> [ $? -eq 0 ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-variable">$__conda_setup</span>&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;/ssd/anaconda3/etc/profile.d/conda.sh&quot;</span> ]; <span class="hljs-keyword">then</span><br>        . <span class="hljs-string">&quot;/ssd/anaconda3/etc/profile.d/conda.sh&quot;</span><br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;/ssd/anaconda3/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br>    <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">unset</span> __conda_setup<br><br></code></pre></td></tr></table></figure><p>粘贴到新建用户的.bashrc最后面 即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>notes</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>cka指标如何度量神经网络的相似性</title>
     <link href="/2021/09/09/cka_1/"/>
     <url>/2021/09/09/cka_1/</url>
