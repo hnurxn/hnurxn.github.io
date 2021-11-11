@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      2.8k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      33
        分钟
     </span>
   
@@ -339,6 +339,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.从远程仓库下载新分支与数据<br>$ git fetch<br>2.然后执行git merge远程分支到你所在的分支<br>$ git merge<br>该命令就是在执行 git fetch 之后紧接着执行 git pull 远程分支到你所在的任意分支。<br>假设你配置好了一个远程仓库，并且你想要提取更新的数据，你可以首先执行 git fetch [<span class="hljs-built_in">alias</span>] 告诉 Git 去获取它有你没有的数据，然后你可以执行 git merge [<span class="hljs-built_in">alias</span>]/[branch] 以将服务器上的任何更新（假设有人这时候推送到服务器了）合并到你的当前分支。<br></code></pre></td></tr></table></figure>
 <p>推送到远程仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">推送你的新分支与数据到某个远端仓库<br>$ git push [<span class="hljs-built_in">alias</span>] [branch]<br>以上命令将你的 [branch] 分支推送成为 [<span class="hljs-built_in">alias</span>] 远程仓库上的 [branch] 分支，实例如下:<br>$ git push origin master <br>将本地的master分支推送到origin远程仓库上<br></code></pre></td></tr></table></figure>
+<p>可能遇到的版本冲突，以pull为例</p>
+<p>当远程仓库和本地仓库对同一文件都修改了，这时候pull远程仓库的时候就会报错，这时候有两种选择</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.保存本地修改<br>git stash 本地快照<br>git pull 可以正常拉取，当前就已经成功pull下来，本地修改也被覆盖了<br>git stash pop 这一句可以把本地修改恢复，打开文件可以看到冲突所在，目前工作区保留的就是标记了冲突的版本，commit push都可以.<br>2.不保留本地修改<br>git reset --hard  恢复到上一个commit id<br>git pull 即可<br></code></pre></td></tr></table></figure>
+<p>当远程仓库和本地仓库对不同文件进行修改，本地可以pull下来，之后再一起push，但是不能直接push，因为pull操作又将版本和GitHub远程的版本一致，所以才可以push.</p>
 <p>删除远程仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 添加仓库 origin2</span><br>$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git<br><br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 删除仓库 origin2</span><br>$ git remote rm origin2<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br></code></pre></td></tr></table></figure>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>分支的使用</font></center></td></tr></table>
