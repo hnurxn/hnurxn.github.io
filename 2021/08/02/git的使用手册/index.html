@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      3.2k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      33
+      36
        分钟
     </span>
   
@@ -259,8 +259,8 @@
 <p>Git 是一个<strong>开源的分布式版本控制系统</strong>，用于敏捷高效地处理任何或小或大的项目（仓库）。有两种类型的仓库，即本地仓库和远程仓库。</p>
 <p><strong>仓库类型</strong>：</p>
 <ul>
-<li>本地仓库：是在开发人员自己电脑尚的Git仓库</li>
-<li>远程仓库：是在远程服务器上的Git仓库</li>
+<li>本地仓库：在开发人员自己电脑上的Git仓库</li>
+<li>远程仓库：在远程服务器上的Git仓库</li>
 </ul>
 <p><strong>主要操作类型</strong>：</p>
 <ul>
@@ -289,8 +289,9 @@
 <strong>第二步</strong>：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>使用说明</font></center></td></tr></table>
 <p><strong>环境配置</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">设置用户信息<br><br>git config --global user.name “username”<br><br>git config --global user.email “emailname@163.com”<br><br>最终的信息会保存在~/.gitconfig文件中<br></code></pre></td></tr></table></figure>
-<p><strong>获取Git仓库</strong>：</p>
+<p>连接远程仓库，这个比较简单，windows和linux在网上都有简易教程，在此略过。大概过程为<font color=blue size=3>客户端输入ssh-keygen -t rsa -C “youremail@example.com” 一路回车→打开~/.ssh/id_rsa.pub并复制key→打开GitHub-Settings-SSH and GPG keys-New SSH key并粘贴保存即可.</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 因为我们各种关于GitHub的操作 大部分需要用户认证，所以 git也要配置好GitHub的信息</span><br><br>设置用户信息<br><br>git config --global user.name “username”<br><br>git config --global user.email “emailname@163.com”<br><br>最终的信息会保存在~/.gitconfig文件中<br><br>邮箱和用户名已经在上面环境配置中设置好了<br>ssh -T git@github.com<br>输入该命令，紧接着输入密码，提醒successfully authenticated则认证成功<br></code></pre></td></tr></table></figure>
+<p><strong>获取Git仓库到本地（两种方式）</strong>：</p>
 <p>要使用Git对我们的代码进行版本控制，首先需要获取Git仓库，获取Git仓库的方式通常有两种：在本地初始化一个仓库以及从远程仓库克隆</p>
 <p><font color= blue>在本地初始化一个Git仓库</font></p>
 <ol>
@@ -302,7 +303,7 @@
 <p><img src="/img/git_1.png" srcset="/img/loading.gif" lazyload alt="手动创建本地仓库" /></p>
 <p><font color= blue>从远程仓库克隆</font></p>
 <p>​	通过Git提供的命令从远程仓库进行克隆，将远程仓库克隆到本地，命令形式为：<u>git clone 远程Git仓库地址</u>（从本地克隆 git clone /path/to/repository），远程Git地址一般用https://github.com/，如果报错可以换git@github.com: 试试。</p>
-<p><strong>更新Git仓库：</strong></p>
+<p><strong>修改本地的Git仓库：</strong></p>
 <p>在版本库的目录（工作区）下新建一个记事本文件readme.txt</p>
 <p><strong>第一步</strong>：使用命令 git add readme.txt添加到暂存区里面去。如下：</p>
 <p><img src="/img/git_2.png" srcset="/img/loading.gif" lazyload alt="第一步：工作区-&gt;暂存区" /></p>
@@ -327,33 +328,57 @@
 </ol>
 <p>删除文件可直接rm b.txt，然后commit命令 提交掉，则彻底删除，提交之前可以通过checkout恢复该文件。</p>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>与远程仓库进行交互</font></center></td></tr></table>
-<p>首先连接远程仓库，这个比较简单，windows和linux在网上都有简易教程，在此略过。大概过程为<font color=blue size=3>客户端输入ssh-keygen -t rsa -C “youremail@example.com” 一路回车→打开~/.ssh/id_rsa.pub并复制key→打开GitHub-Settings-SSH and GPG keys-New SSH key并粘贴保存即可.</font></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">邮箱和用户名已经在上面环境配置中设置好了<br>ssh -T git@github.com<br>输入该命令，紧接着输入密码，提醒successfully authenticated则认证成功<br></code></pre></td></tr></table></figure>
-<p>保证可以连接远程仓库后，打开GitHub主页新建一个空的远程仓库比如newrepo，这时候可以在本地仓库的工作区输入以下命令进行提交</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote -v 查看当前远程仓库<br>git remote rm origin 有远程仓库先删掉<br>git remote add origin git@github.com:hnurxn(username)/newrepo(projectname).git 重新设置为你的用户名/仓库名<br>git branch -M main(可有可无默认为master，push的分支与下面统一)<br>git push -u origin master 完成push操作<br></code></pre></td></tr></table></figure>
+<p><font color= blue><strong>本地和远程仓库的交互</strong></font></p>
+<p><strong>本地仓库push到远程仓库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># 添加远程仓库 origin是自定义的名字，可以add多个远程仓库，名字不同即可</span><br>git remote add origin git@github.com:hnurxn(username)/newrepo(projectname).git 重新设置为你的用户名/仓库名<br><span class="hljs-comment"># 查看当前远程仓库 </span><br>git remote -v <br><span class="hljs-comment"># 删掉远程仓库origin</span><br>git remote rm origin <br><span class="hljs-comment"># 当我本地建立了一个仓库且当前分支为master时，将当前分支master push到 远程仓库origin 里  这时候 origin有了新的分支</span><br>git push origin master <br><span class="hljs-comment"># 完成push操作 </span><br><br><span class="hljs-comment"># 将远程仓库克隆下来</span><br>git <span class="hljs-built_in">clone</span> url<br><span class="hljs-comment"># 将本地提交的master分支 合并到main分支</span><br>git checkout main <span class="hljs-comment"># 切换到要合并的分支</span><br>git merge master --allow-unrelated-histories <span class="hljs-comment"># master是被合并的分支</span><br></code></pre></td></tr></table></figure>
 <p><img src="/img/git_6.png" srcset="/img/loading.gif" lazyload alt="本地向远程传送" /></p>
-<p>以上是最基本的从本地到远程服务器push文件的方法，细节操作有以下内容：</p>
-<p>查看当前的远程库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote<br>origin<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>执行时加上-v参数，可以看到每个别名的实际链接地址<br></code></pre></td></tr></table></figure>
-<p>提取远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.从远程仓库下载新分支与数据<br>$ git fetch<br>2.然后执行git merge远程分支到你所在的分支<br>$ git merge<br>该命令就是在执行 git fetch 之后紧接着执行 git pull 远程分支到你所在的任意分支。<br>假设你配置好了一个远程仓库，并且你想要提取更新的数据，你可以首先执行 git fetch [<span class="hljs-built_in">alias</span>] 告诉 Git 去获取它有你没有的数据，然后你可以执行 git merge [<span class="hljs-built_in">alias</span>]/[branch] 以将服务器上的任何更新（假设有人这时候推送到服务器了）合并到你的当前分支。<br></code></pre></td></tr></table></figure>
-<p>推送到远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">推送你的新分支与数据到某个远端仓库<br>$ git push [<span class="hljs-built_in">alias</span>] [branch]<br>以上命令将你的 [branch] 分支推送成为 [<span class="hljs-built_in">alias</span>] 远程仓库上的 [branch] 分支，实例如下:<br>$ git push origin master <br>将本地的master分支推送到origin远程仓库上<br></code></pre></td></tr></table></figure>
-<p>可能遇到的版本冲突，以pull为例</p>
-<p>当远程仓库和本地仓库对同一文件都修改了，这时候pull远程仓库的时候就会报错，这时候有两种选择</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.保存本地修改<br>git stash 本地快照<br>git pull 可以正常拉取，当前就已经成功pull下来，本地修改也被覆盖了<br>git stash pop 这一句可以把本地修改恢复，打开文件可以看到冲突所在，目前工作区保留的就是标记了冲突的版本，commit push都可以.<br>2.不保留本地修改<br>git reset --hard  恢复到上一个commit id<br>git pull 即可<br></code></pre></td></tr></table></figure>
+<p><strong>远程仓库clone到本地仓库（修改后可继续push到远程仓库）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.从远程仓库下载到本地<br>$ git <span class="hljs-built_in">clone</span> url<br>2.从远程仓库下载新分支与数据，保持版本一致(一般再过一段时间后要修改的时候 先确定版本一致，避免冲突)<br>$ git pull<br>3.本地修改 【见使用说明】<br>4.推送你的新分支与数据到某个远端仓库<br>$ git push [<span class="hljs-built_in">alias</span>] [branch]<br>以上命令将你的 [branch] 分支推送成为 [<span class="hljs-built_in">alias</span>] 远程仓库上的 [branch] 分支<br><span class="hljs-comment"># 如果远程仓库只有一个，默认该仓库，以及默认当前分支</span><br></code></pre></td></tr></table></figure>
+<p><font color= blue><strong>解决版本冲突</strong></font>【当远程仓库和本地仓库对同一文件都修改】</p>
 <p>当远程仓库和本地仓库对不同文件进行修改，本地可以pull下来，之后再一起push，但是不能直接push，<strong>因为pull操作又将版本和GitHub远程的版本一致，所以才可以push.</strong></p>
-<p>删除远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 添加仓库 origin2</span><br>$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git<br><br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin2    git@github.com:tianqixin/runoob-git-test.git (push)<br><br><span class="hljs-comment"># 删除仓库 origin2</span><br>$ git remote rm origin2<br>$ git remote -v<br>origin    git@github.com:tianqixin/runoob-git-test.git (fetch)<br>origin    git@github.com:tianqixin/runoob-git-test.git (push)<br></code></pre></td></tr></table></figure>
+<p><strong>通过Pull解决冲突有两种方法</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.保存本地修改<br>git stash 本地快照<br>git pull 可以正常拉取，当前就已经成功pull下来，本地修改也被覆盖了<br>git stash pop 这一句可以把本地修改恢复，打开文件可以看到冲突所在，目前工作区保留的就是标记了冲突的版本，commit push都可以.<br>2.不保留本地修改<br>git reset --hard  恢复到上一个commit id<br>git pull 即可<br></code></pre></td></tr></table></figure>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>分支的使用</font></center></td></tr></table>
 <p>分支即branch，每个分支可以理解为独立的一个项目思路。每个branch有自己独立的工作区，即有独立的文件区，在本地仓库下输入以下命令进行操作：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch 列举分支<br>$ git branch testing 新建分支<br>$ git checkout testing 切换当前分支<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git branch 列举分支<br>$ git branch testing 新建分支<br>$ git checkout testing 切换当前分支<br>$ git branch -m oldName newName 修改分支名字<br></code></pre></td></tr></table></figure>
 <p>以从远程仓库clone到本地仓库为例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.先将远程仓库克隆到本地<br>$ git <span class="hljs-built_in">clone</span> 仓库地址<br>2.在本地仓库打开Git bash 默认的分支为master<br>3.利用checkout切换分支（如果远程仓库有多个分支的话）<br>$ git checkout branchname<br>4.切换到哪个分支，文件夹则显示哪个分支的文件区，即当前工作区（每个分支有不同的提交记录commit），在当前工作区可以修改文件，然后add+commit,commit记录保存到该分支的总记录中。<br>5.在该分支下，输入 git push -u origin branchname 则将该分支push到远程仓库的对应分支<br></code></pre></td></tr></table></figure>
+<p><font color= blue><strong>解决合并分支冲突</strong></font>【当远程仓库和本地仓库的某个分支对同一文件都修改】</p>
+<p>通过merge发现以下冲突</p>
+<p><img src="/img/git_8.png" srcset="/img/loading.gif" lazyload alt="本地向远程传送" /></p>
+<p>查看冲突内容</p>
+<p><img src="/img/git_9.png" srcset="/img/loading.gif" lazyload alt="查看冲突内容" /></p>
+<p>这时候有两个解决方法：</p>
+<p>1.先用git merge --abort 取消合并 ，<code>git merge -s ours branchA</code> 使用<code>ours</code>策略合并，产生一个merge记录，但是没有branchA的内容，默认以当前分支为准。</p>
+<p>2.根据冲突内容 修改后 提交即可</p>
+<p><code>======</code>的那一行是冲突发生的正中间。在冲突中间和<code>&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>之间的那些行表示的是存在于当前分支——也就是当前仓库中HEAD指针指向的那个分支——的内容。相对应的在冲突中间到<code>&gt;&gt;&gt;&gt;&gt;&gt;</code>行之间的内容则是<code>new_branch_to_merge_later</code>分支中的内容。</p>
+<p>然后根据自身情况进行修改冲突文件，修改完 commit提交，则合并自动成功。</p>
+<table><tr><td bgcolor=yellow><center><font face="黑体" size=5>新增的内容</font></center></td></tr></table>
+<p>一个项目有多个分支，我们每次的修改提交等操作都是针对具体分支的，然后push 也指的是 将该分支push到远程仓库的对应分支。</p>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>容易混淆的概念</font></center></td></tr></table>
 <p><font color = blue size = 4>工作区 本地仓库  远程仓库  项目  版本库 仓库</font></p>
 <p><strong>工作区</strong>是指<strong>本地仓库</strong>除去.git文件夹的全部内容，即具体的代码工程，每一次修改与提交都会记录在.git文件夹里，每一次修改也代表着一个新的版本，因此仓库整体又称为<strong>版本库</strong></p>
 <p><strong>项目+git版本控制=仓库=版本库（本地仓库+远程仓库）=工作区+.git文件夹</strong></p>
+<p><font color = blue size = 4>git  github</font></p>
+<p>git是一个版本管理工具，在本地不联网的情况下也可以帮你管理自己的程序。</p>
+<p>GitHub是一个网站，给用户提供git服务，每个用户可以创建自己的远程仓库，各种操作都可视化。</p>
+<p><font color = blue size = 4>fork clone</font></p>
+<p>fork：在github页面，点击fork按钮。将别人的仓库复制一份到自己的仓库。</p>
+<p>clone：用git 将github中的仓库克隆到自己本地电脑中</p>
+<p>比如在仓库的主人（A）没有把我们添加为项目合作者的前提下，我们将A的某个仓库名为“B”的仓库clone到自己的电脑中，在自己的电脑进行修改，但是我们会发现我们没办法通过push将代码贡献到B中。</p>
+<p>所以要想将你的代码贡献到B中，我们应该：</p>
+<ul>
+<li>
+<p>在A的仓库中fork项目B （此时我们自己的github就有一个一模一样的仓库B，但是URL不同）</p>
+</li>
+<li>
+<p>将我们修改的代码push到自己github中的仓库B中</p>
+</li>
+<li>
+<p>pull request ，主人就会收到请求，并决定要不要接受你的代码</p>
+</li>
+</ul>
+<p><img src="/img/git_7.png" srcset="/img/loading.gif" lazyload alt="github的工作流" /></p>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>下载GitHub的单个文件</font></center></td></tr></table>
 <p><strong>方法一</strong>：</p>
 <p>假设 GitHub 文件的原 URL 是：</p>
