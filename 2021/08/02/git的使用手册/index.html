@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.4k 字
+      3.5k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      40
        分钟
     </span>
   
@@ -357,10 +357,13 @@
 <p>一个项目有多个分支，我们每次的修改提交等操作都是针对具体分支的，比如当你在分支a下修改了内容后，必须提交才能切换分支。</p>
 <p>然后push/pull也指的是 将该分支push到远程仓库的对应分支。</p>
 <p>注意事项：</p>
-<p>1.在本地git push卡主不动： 执行以下代码然后重新push即可</p>
+<p><strong>1.在本地git push卡主不动： 执行以下代码然后重新push即可</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote rm origin  解除原先连接<br>$ git remote add origin url 连接ssh地址的远程库<br></code></pre></td></tr></table></figure>
-<p>2.良好的习惯应该用完整的代码</p>
+<p><strong>2.良好的习惯应该用完整的代码</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将remote的branch分支pull下来</span><br>$ git pull &lt;remote&gt; &lt;branch&gt; <br><span class="hljs-comment"># 将当前branch分支 push到remote上，如果没有则创建</span><br>$ git push &lt;remote&gt; &lt;branch&gt; <br><span class="hljs-comment"># 这时候很可能出现冲突,状态变成merging</span><br><span class="hljs-comment"># 找到冲突文件，将内容修改后add + commit 即可 ，状态自动变成合并成功的状态</span><br></code></pre></td></tr></table></figure>
+<p><strong>3.分支之间是独立的</strong></p>
+<p>当仓库的分支不止一个的时候，无论是本地仓库还是远程仓库【一般情况下二者的分支数是一致的】，每个分支都有可能修改，因此我们在git push或者pull的时候 一定要注明分支名称，这样才是规范的写法。</p>
+<p>注明分支名称后，push或pull的操作便是 对某个分支的操作，当远程和本地仓库都有该分支，而且分支修改了同一文件便会冲突，按照上述方法解决即可，如果没有冲突 则 操作完成。</p>
 <table><tr><td bgcolor=yellow><center><font face="黑体" size=5>容易混淆的概念</font></center></td></tr></table>
 <p><font color = blue size = 4>工作区 本地仓库  远程仓库  项目  版本库 仓库</font></p>
 <p><strong>工作区</strong>是指<strong>本地仓库</strong>除去.git文件夹的全部内容，即具体的代码工程，每一次修改与提交都会记录在.git文件夹里，每一次修改也代表着一个新的版本，因此仓库整体又称为<strong>版本库</strong></p>
