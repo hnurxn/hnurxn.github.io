@@ -8,7 +8,7 @@
     <link href="/2022/06/06/docker/"/>
     <url>/2022/06/06/docker/</url>
     
-    <content type="html"><![CDATA[<h1 id="安装docker常遇到的问题"><a class="markdownIt-Anchor" href="#安装docker常遇到的问题"></a> 安装docker常遇到的问题</h1><ol><li>WSL 2 installation is incomplete.</li></ol><p>需要手动更新一下，下载最新版的<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">WSL2</a>安装即可（双击安装），安装成功后如下图</p><p><img src="/img/docker_1.png" alt="wsl版本查询" /></p><ol start="2"><li>用wsl --install -d Ubuntu 安装Linux子系统太慢，需要用microsoft store安装 会快一点</li></ol><p>win+R 输入wsreset，回车，等一会自动重新打开Microsoft store 就可以了，如果还不行 则配置一下语言，时区等内容，重启电脑。</p><h3 id="参考教程"><a class="markdownIt-Anchor" href="#参考教程"></a> 参考教程</h3><p><a href="https://docker.easydoc.net/">https://docker.easydoc.net/</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="安装docker常遇到的问题"><a class="markdownIt-Anchor" href="#安装docker常遇到的问题"></a> 安装docker常遇到的问题</h1><ol><li>WSL 2 installation is incomplete.</li></ol><p>需要手动更新一下，下载最新版的<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">WSL2</a>安装即可（双击安装），安装成功后如下图</p><p><img src="/img/docker_1.png" alt="wsl版本查询" /></p><ol start="2"><li>用wsl --install -d Ubuntu 安装Linux子系统太慢，需要用microsoft store安装 会快一点</li></ol><p>win+R 输入wsreset，回车，等一会自动重新打开Microsoft store 就可以了，如果还不行 则配置一下语言，时区等内容，重启电脑。</p><p>最终可以在开始栏搜索 Ubuntu 打开 ，设置账号密码即可 如下图</p><p><img src="/img/docker_2.png" alt="第一次打开linux" /></p><h3 id="参考教程"><a class="markdownIt-Anchor" href="#参考教程"></a> 参考教程</h3><p><a href="https://docker.easydoc.net/">https://docker.easydoc.net/</a></p>]]></content>
     
     
     <categories>
