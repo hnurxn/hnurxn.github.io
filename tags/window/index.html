@@ -14,29 +14,13 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="latex各种文件的意义">
+  <meta name="description" content="some interesting and funny things">
   <meta name="author" content="Mr Free">
   <meta name="keywords" content="">
   
-  <title>latex使用的基本要素 - hnurxn&#39;s blog</title>
+  <title>标签 - window - hnurxn&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -64,7 +48,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -170,68 +154,22 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/background.jpg') no-repeat center center;
+         style="background: url('/img/biaoqian.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="latex使用的基本要素">
+            <span class="h2" id="subtitle" title="标签 - window">
               
             </span>
 
             
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      Mr Free
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-11 10:39" pubdate>
-        2021年11月11日 上午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      425 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      5
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
-
-            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -241,205 +179,40 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2022</p>
+    
+    <a href="/2022/06/06/docker/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">windows下使用docker</span>
+      <time style="float: right;">06-06</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">latex使用的基本要素</h1>
-            
-            <div class="markdown-body">
-              <h1 id="latex的各种文件"><a class="markdownIt-Anchor" href="#latex的各种文件"></a> latex的各种文件</h1>
-<table>
-<thead>
-<tr>
-<th>.tex</th>
-<th>最常见的latex文件，也是平时编写文章的文件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.cls</td>
-<td>是latex的格式文件，规定了tex源文件的排版格局，称为类文件（class）,一般使用\documentclass{}导入。</td>
-</tr>
-<tr>
-<td>.sty</td>
-<td>是宏包文件（package）,一般使用\usepackage{}导入。</td>
-</tr>
-<tr>
-<td>.bst</td>
-<td>是参考文件的格式文件,一般使用\bibliographystyle{}导入。</td>
-</tr>
-<tr>
-<td>.bib</td>
-<td>是参考文献的库,一般使用\bibliography{}导入。</td>
-</tr>
-<tr>
-<td>.log</td>
-<td>排版引擎生成的日志文件，供排查错误使用。</td>
-</tr>
-<tr>
-<td>.aux</td>
-<td>LaTeX 生成的主辅助文件，记录交叉引用、目录、参考文献的引用等。</td>
-</tr>
-<tr>
-<td>.toc</td>
-<td>LaTeX 生成的目录记录文件。</td>
-</tr>
-<tr>
-<td>.lof</td>
-<td>LaTeX 生成的图片目录记录文件。</td>
-</tr>
-<tr>
-<td>.lot</td>
-<td>LaTeX 生成的表格目录记录文件。</td>
-</tr>
-<tr>
-<td>.bbl</td>
-<td>BibTeX 生成的参考文献记录文件。</td>
-</tr>
-<tr>
-<td>.blg</td>
-<td>BibTeX 生成的日志文件。</td>
-</tr>
-<tr>
-<td>.idx</td>
-<td>LaTeX 生成的供 makeindex 处理的索引记录文件。</td>
-</tr>
-<tr>
-<td>.ind</td>
-<td>makeindex 处理</td>
-</tr>
-<tr>
-<td>.idx</td>
-<td>生成的格式化索引记录文件</td>
-</tr>
-<tr>
-<td>.ilg</td>
-<td>makeindex 生成的日志文件</td>
-</tr>
-<tr>
-<td>.out</td>
-<td>hyperref 宏包生成的 PDF 书签记录</td>
-</tr>
-</tbody>
-</table>
-<h1 id="latex源文件的基本结构"><a class="markdownIt-Anchor" href="#latex源文件的基本结构"></a> latex源文件的基本结构</h1>
-<p>1.源文件开始</p>
-<p><strong>Latex 源文件都要以\documentclass{…}开始，这条命令指明了你所写的源文档的类型。如：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs latex">\documentclass&#123;article&#125;<br>\documentclass[a4paper, 11pt]&#123;article&#125;<br></code></pre></td></tr></table></figure>
-<p>2.导入所需宏包</p>
-<p><strong>加入控制整篇文档样式的命令，或者载入一些为LATEX 增加新特性的宏包(package)。如：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\usepackage&#123;ctex&#125;<br>\usepackage&#123;graphicx&#125;<br>\usepackage&#123;float&#125; <br>\usepackage&#123;...&#125;<br></code></pre></td></tr></table></figure>
-<p>3.开始文档主题</p>
-<p><strong>\end{document}是整篇文档结束的标志，LATEX 会忽略\end{document}后的所有内容。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;document&#125;<br>这里可以输入带有LATEX 命令的正文。<br>\end&#123;document&#125;<br></code></pre></td></tr></table></figure>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Tutorials/">Tutorials</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/latex/">latex</a>
-                    
-                  </div>
-                
+
+
+
               </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/06/06/docker/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">windows下使用docker</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/09/18/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-                        <span class="hidden-mobile">服务器配置的一些小细节</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"MJAd57UreVBPxte7PDoEMye0-gzGzoHsz","appKey":"388yI2KkDdst7lb1E99J416E","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -544,15 +317,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
@@ -586,23 +353,9 @@
 
 
 
-  
-
-  
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.10/dist/katex.min.css" />
-  
 
 
 
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
 
 
 
