@@ -202,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.9k 字
+      3.4k 字
     </span>
   
 
@@ -212,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      37
+      42
        分钟
     </span>
   
@@ -256,10 +256,24 @@
             <div class="markdown-body">
               <h2 id="linux-kernel版本"><a class="markdownIt-Anchor" href="#linux-kernel版本"></a> Linux Kernel版本</h2>
 <p>uname -a</p>
+<h2 id="概念区分"><a class="markdownIt-Anchor" href="#概念区分"></a> 概念区分</h2>
+<p>显卡：接在电脑主板上，将数字信号转换成模拟信号让显示器显示出来，原始显卡集成在主板上，只完成基本的信号输出工作，不用来处理数据。</p>
+<p>GPU：显卡上的一块芯片（类似主板上的CPU），刚开始仅用于图像处理，后来为了让其它领域的人感受到GPU运算的强大，公司提出了CUDA概念。</p>
+<p>CUDA：通用并行计算架构。它包含CUDA指令集架构以及GPU内部的并行计算引擎。你只要使用一种类似于C语言的 CUDA C语言，就可以开发CUDA程序。</p>
+<p>CUDA Toolkit：CUDA的工具包，安装CUDA其实就是安装CUDA Toolkit 【会对驱动版本有要求】</p>
+<p>显卡驱动Driver：NVIDIA的显卡驱动程序，添加到操作系统的一小块代码，包含有关硬件设备的信息。</p>
+<p>CUDA应用程序：系统至少有一个支持CUDA的GPU和一个与CUDA Toolkit兼容的显卡驱动，每个版本的CUDA Toolkit都对应一个最低版本显卡驱动，显卡驱动是向后兼容的。</p>
+<p>NVCC： CUDA的编译器，类似gcc是c语言的编译器</p>
+<p>conda安装的cuda toolkit：不包含cuda的全部文件，原装的cuda是conda-cudatoolkit的超集</p>
 <h2 id="cuda版本"><a class="markdownIt-Anchor" href="#cuda版本"></a> CUDA版本</h2>
 <p>CUDA 有两种API，分别是 <strong>运行时 API</strong> 和 <strong>驱动API</strong>，即所谓的 Runtime API 与 Driver API。<br />
 <strong>nvidia-smi</strong> 的结果除了有 GPU 驱动版本型号，还有 CUDA Driver API的型号，这里是 10.0。<br />
 而<strong>nvcc -V</strong>的结果是对应 CUDA Runtime API.</p>
+<ol>
+<li>用于支持driver API的必要文件（如<code>libcuda.so</code>）是由GPU driver installer安装的。<code>nvidia-smi</code> 就属于这一类API</li>
+<li>用于支持runtime API的必要文件（如<code>libcudart.so</code>以及<code>nvcc</code>）是由CUDA Toolkit installer安装的</li>
+</ol>
+<p>由于显卡驱动是向后兼容的，一般显卡驱动的版本都是要高于当前CUDA Toolkit所对应的最低版本，nvidia-smi获得的CUDA版本一般大于或者等于nvcc -V获得的CUDA版本，实际运行时是使用的nvcc -V版本。</p>
 <h2 id="cudnn版本"><a class="markdownIt-Anchor" href="#cudnn版本"></a> cudnn版本</h2>
 <p>cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</p>
 <h2 id="版本对应关系"><a class="markdownIt-Anchor" href="#版本对应关系"></a> 版本对应关系</h2>
